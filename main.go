@@ -1,17 +1,26 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
 	"gopkg.in/ini.v1"
 )
 
+var (
+	prefix string
+	file   string
+)
+
 func main() {
-	prefix := "INI"
-	cfg, err := ini.Load("file.ini")
+	flag.StringVar(&prefix, "prefix", "INI", "the prefix to add to the variable names")
+	flag.StringVar(&file, "file", "file.ini", "the ini file to parse")
+	flag.Parse()
+
+	cfg, err := ini.Load(file)
 	if err != nil {
-		fmt.Printf("Fail to read file: %v", err)
+		fmt.Printf("Fail to read file: %v\n", err)
 		os.Exit(1)
 	}
 	sections := cfg.SectionStrings()
