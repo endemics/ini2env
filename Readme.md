@@ -29,3 +29,4 @@ You can provide the following optional arguments to `ini2env`:
 
 - `-file`: to set the name of the ini file you want to parse (default is `file.ini`)
 - `-prefix`: to change the prefix from "INI" to another value
+- `-booleans`: to transform boolean-like values to "1" (for truthy values) or "0"
